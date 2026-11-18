@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde959c1b12b9c3ac88eccb6373fbf3a, type: 3}
+  m_Name: SO_Movement_Default
+  m_EditorClassIdentifier: 
+  maxRunSpeed: 8
+  groundAcceleration: 80
+  groundDeceleration: 90
+  airAcceleration: 55
+  airDeceleration: 30
+  turnMultiplier: 1.5
+  jumpHeight: 3.2
+  timeToApex: 0.38
+  fallGravityMultiplier: 1.7
+  jumpCutGravityMultiplier: 3
+  maxFallSpeed: 22
+  coyoteTime: 0.1
+  jumpBufferTime: 0.12
+  maxSlopeAngle: 45
+  groundSnapDistance: 0.35
+  dropThroughTime: 0.25

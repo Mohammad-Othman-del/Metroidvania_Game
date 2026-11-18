@@ -81,7 +81,7 @@ namespace Metroidvania.EditorTools
             mainCamera.transform.SetPositionAndRotation(vcam.transform.position, Quaternion.identity);
         }
 
-        static CinemachineCamera FindVirtualCamera()
+        public static CinemachineCamera FindVirtualCamera()
         {
             foreach (var cam in Object.FindObjectsByType<CinemachineCamera>(FindObjectsInactive.Include, FindObjectsSortMode.None))
                 if (cam.name == VirtualCameraName)

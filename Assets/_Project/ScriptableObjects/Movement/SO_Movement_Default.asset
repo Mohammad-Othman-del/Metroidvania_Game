@@ -28,3 +28,7 @@ MonoBehaviour:
   maxSlopeAngle: 45
   groundSnapDistance: 0.35
   dropThroughTime: 0.25
+  dodgeSpeed: 16
+  dodgeDuration: 0.2
+  dodgeCooldown: 0.35
+  airDodges: 1

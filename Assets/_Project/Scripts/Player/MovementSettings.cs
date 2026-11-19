@@ -49,6 +49,16 @@ namespace Metroidvania.Player
         [Tooltip("Seconds one-way platforms are ignored after down + jump.")]
         [Min(0f)] public float dropThroughTime = 0.25f;
 
+        [Header("Dodge")]
+        [Tooltip("Horizontal speed in m/s during a dodge. Gravity is off while dodging.")]
+        [Min(0f)] public float dodgeSpeed = 16f;
+        [Tooltip("Seconds a dodge lasts. Distance = speed x duration.")]
+        [Min(0.01f)] public float dodgeDuration = 0.2f;
+        [Tooltip("Seconds after a dodge ends before the next one can start.")]
+        [Min(0f)] public float dodgeCooldown = 0.35f;
+        [Tooltip("Dodges allowed per jump/fall before touching the ground again.")]
+        [Min(0)] public int airDodges = 1;
+
         /// <summary>Upward gravity in m/s² (positive number).</summary>
         public float Gravity => 2f * jumpHeight / (timeToApex * timeToApex);
 

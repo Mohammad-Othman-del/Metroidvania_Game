@@ -1,7 +1,6 @@
 using System.IO;
 using Metroidvania.Input;
 using Metroidvania.Player;
-using Unity.Cinemachine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -15,7 +14,9 @@ namespace Metroidvania.EditorTools
     /// </summary>
     public static class TestPlayerSetup
     {
-        const string PrefabPath = "Assets/_Project/Prefabs/Player/Player_Base.prefab";
+        public const string CameraTargetName = "CameraTarget";
+
+        internal const string PrefabPath = "Assets/_Project/Prefabs/Player/Player_Base.prefab";
         const string SettingsPath = "Assets/_Project/ScriptableObjects/Movement/SO_Movement_Default.asset";
         const string MaterialDir = "Assets/_Project/Art/Materials/Placeholder";
 
@@ -57,7 +58,8 @@ namespace Metroidvania.EditorTools
             Vector3 spawnPos = spawn != null ? spawn.transform.position : new Vector3(3f, 0f, 0f);
             instance.transform.position = spawnPos + Vector3.up * 0.05f;
 
-            FollowWithCamera(instance.transform);
+            SideCameraSetup.ConfigureFollow(instance.GetComponent<PlayerController>());
+            SideCameraSetup.ConfigureBounds();
 
             Selection.activeGameObject = instance;
             EditorSceneManager.MarkSceneDirty(instance.scene);
@@ -112,6 +114,8 @@ namespace Metroidvania.EditorTools
             controllerSo.FindProperty("visual").objectReferenceValue = visual;
             controllerSo.ApplyModifiedPropertiesWithoutUndo();
 
+            EnsureCameraTarget(root);
+
             Directory.CreateDirectory(Path.GetDirectoryName(PrefabPath));
             GameObject prefab = PrefabUtility.SaveAsPrefabAsset(root, PrefabPath);
             Object.DestroyImmediate(root);
@@ -129,26 +133,23 @@ namespace Metroidvania.EditorTools
             return go;
         }
 
-        static void FollowWithCamera(Transform target)
+        /// <summary>Adds the CameraTarget child and the CameraFollowTarget component that drives it, if missing.</summary>
+        internal static void EnsureCameraTarget(GameObject root)
         {
-            CinemachineCamera vcam = SideCameraSetup.FindVirtualCamera();
-            if (vcam == null)
+            Transform target = root.transform.Find(CameraTargetName);
+            if (target == null)
             {
-                SideCameraSetup.Apply();
-                vcam = SideCameraSetup.FindVirtualCamera();
+                target = new GameObject(CameraTargetName).transform;
+                target.SetParent(root.transform, false);
+                target.localPosition = new Vector3(0f, 1.5f, 0f);
             }
 
-            Undo.RecordObject(vcam, "Follow Player");
-            vcam.Follow = target;
+            if (!root.TryGetComponent(out CameraFollowTarget follow))
+                follow = root.AddComponent<CameraFollowTarget>();
 
-            // Basic follow so the player can be tested. Dead zone, look-ahead and room bounds come in the camera step.
-            if (!vcam.TryGetComponent(out CinemachinePositionComposer composer))
-            {
-                composer = Undo.AddComponent<CinemachinePositionComposer>(vcam.gameObject);
-                composer.CameraDistance = SideCameraSetup.Distance;
-                composer.TargetOffset = new Vector3(0f, 1.5f, 0f);
-                composer.Damping = new Vector3(0.3f, 0.3f, 0f);
-            }
+            var so = new SerializedObject(follow);
+            so.FindProperty("target").objectReferenceValue = target;
+            so.ApplyModifiedPropertiesWithoutUndo();
         }
 
         static MovementSettings GetOrCreateSettings()
@@ -163,7 +164,7 @@ namespace Metroidvania.EditorTools
             return settings;
         }
 
-        static Material GetOrCreateMaterial(string name, Color color)
+        internal static Material GetOrCreateMaterial(string name, Color color)
         {
             string path = $"{MaterialDir}/{name}.mat";
             var mat = AssetDatabase.LoadAssetAtPath<Material>(path);

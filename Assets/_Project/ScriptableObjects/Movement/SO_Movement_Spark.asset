@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde959c1b12b9c3ac88eccb6373fbf3a, type: 3}
+  m_Name: SO_Movement_Spark
+  m_EditorClassIdentifier: 
+  maxRunSpeed: 10
+  groundAcceleration: 110
+  groundDeceleration: 120
+  airAcceleration: 80
+  airDeceleration: 40
+  turnMultiplier: 1.6
+  jumpHeight: 3.8
+  timeToApex: 0.42
+  fallGravityMultiplier: 1.5
+  jumpCutGravityMultiplier: 3.2
+  maxFallSpeed: 18
+  coyoteTime: 0.12
+  jumpBufferTime: 0.12
+  maxSlopeAngle: 45
+  groundSnapDistance: 0.4
+  dropThroughTime: 0.25
+  dodgeSpeed: 20
+  dodgeDuration: 0.2
+  dodgeCooldown: 0.3
+  airDodges: 1

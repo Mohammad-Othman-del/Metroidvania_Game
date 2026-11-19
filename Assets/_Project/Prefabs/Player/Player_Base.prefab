@@ -33,6 +33,37 @@ Transform:
   - {fileID: 7338183898268539067}
   m_Father: {fileID: 3852247974519810266}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2880321409833539546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1525588367268316887}
+  m_Layer: 0
+  m_Name: CameraTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1525588367268316887
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2880321409833539546}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3852247974519810266}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4920373320060331177
 GameObject:
   m_ObjectHideFlags: 0
@@ -47,6 +78,7 @@ GameObject:
   - component: {fileID: 5451669160535001733}
   - component: {fileID: 7605631126353404087}
   - component: {fileID: 40840663677524715}
+  - component: {fileID: 6633853137037496148}
   m_Layer: 8
   m_Name: Player_Base
   m_TagString: Untagged
@@ -68,6 +100,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1971267618928327798}
+  - {fileID: 1525588367268316887}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &7699628996947154457
@@ -168,6 +201,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: a6678867b9d3ceb628bec46f494d3118, type: 2}
   visual: {fileID: 1971267618928327798}
+--- !u!114 &6633853137037496148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4920373320060331177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a243578afb3aa290a80370f47a51196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1525588367268316887}
+  height: 1.5
+  lookAheadDistance: 2.5
+  lookAheadSmoothTime: 0.6
+  fallLookDownDistance: 3
+  fallLookDownDelay: 0.4
+  fallSmoothTime: 0.25
 --- !u!1 &6228886048530944931
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ namespace Metroidvania.EditorTools
     /// </summary>
     public static class TestLevelBuilder
     {
-        const string ScenePath = "Assets/_Project/Scenes/Movment Testing/Movement Testing.unity";
+        const string ScenePath = "Assets/_Project/Scenes/Test/Movement.unity";
         const string MaterialDir = "Assets/_Project/Art/Materials/Greybox";
         const string TextureDir = "Assets/_Project/Art/Textures";
         const string GridTexturePath = TextureDir + "/T_GreyboxGrid.png";
@@ -60,6 +60,7 @@ namespace Metroidvania.EditorTools
             spawn.transform.position = new Vector3(3f, 0f, 0f);
 
             SideCameraSetup.Apply();
+            SideCameraSetup.ConfigureBounds();
 
             Directory.CreateDirectory(Path.GetDirectoryName(ScenePath));
             EditorSceneManager.SaveScene(scene, ScenePath);

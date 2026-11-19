@@ -27,6 +27,17 @@ Installed through the Unity Package Manager. Exact versions are locked in `Packa
 - ProBuilder
 - TextMeshPro
 
+Networking (Phase 2):
+
+| Package | Version | Used for |
+| --- | --- | --- |
+| Netcode for GameObjects | 2.13.3 | Networked objects and sync (3.x needs Unity 6000.7) |
+| Multiplayer Services | 2.5.0 | Relay and Lobby (Sessions API): host and join with a code |
+| Multiplayer Tools | 2.2.12 | Network simulator for lag and packet-loss tests |
+| Multiplayer Play Mode | 1.6.3 | A second player inside the editor for quick tests |
+
+The project is linked to a Unity Cloud project (Relay and Lobby). Its id is stored in `ProjectSettings`, so both of us use the same one automatically.
+
 ## Setup
 
 ```bash

@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spark
       objectReference: {fileID: 0}
+    - target: {fileID: 6167169383637835483, guid: 3bf7d151b7f2d6a938fb78663b934d32, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 983005102
+      objectReference: {fileID: 0}
     - target: {fileID: 6633853137037496148, guid: 3bf7d151b7f2d6a938fb78663b934d32, type: 3}
       propertyPath: height
       value: 1.3499999

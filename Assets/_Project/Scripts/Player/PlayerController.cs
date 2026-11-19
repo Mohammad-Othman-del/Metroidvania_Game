@@ -87,6 +87,16 @@ namespace Metroidvania.Player
                 stateMachine.ChangeState(PlayerStateId.Fall);
         }
 
+        /// <summary>
+        /// Shows the character facing a direction without simulating it. Used when something else
+        /// drives this character, e.g. a remote player whose position comes from the network.
+        /// </summary>
+        public void ShowFacing(int direction)
+        {
+            Facing = direction >= 0 ? 1 : -1;
+            ApplyFacingToVisual();
+        }
+
         // ------------------------------------------------------------------ Unity
 
         void Reset()
